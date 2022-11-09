@@ -7,4 +7,5 @@ import (
 
 func main() {
 	global.TD27_VP = core.Viper()
+	global.TD27_LOG = core.Zap()
 }

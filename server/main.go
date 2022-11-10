@@ -19,4 +19,5 @@ func main() {
 		db, _ := global.TD27_DB.DB()
 		defer db.Close()
 	}
+	core.RunServer()
 }

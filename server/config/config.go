@@ -8,4 +8,5 @@ type Server struct {
 	Mysql      Mysql      `mapstructure:"mysql" json:"mysql" yaml:"mysql"`
 	Redis      Redis      `mapstructure:"redis" json:"redis" yaml:"redis"`
 	Captcha    Captcha    `mapstructure:"captcha" json:"captcha" yaml:"captcha"`
+	Cors       CORS       `mapstructure:"cors" json:"cors" yaml:"cors"` // 跨域配置
 }

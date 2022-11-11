@@ -1,8 +1,8 @@
 package config
 
 type Mysql struct {
-	Path         string `mapstructure:"path" json:"path" yaml:"path"`                               // 服务器地址:端口
-	Port         string `mapstructure:"port" json:"port" yaml:"port"`                               //:端口
+	Host         string `mapstructure:"host" json:"host" yaml:"host"`                               // 地址
+	Port         string `mapstructure:"port" json:"port" yaml:"port"`                               // 端口
 	Config       string `mapstructure:"config" json:"config" yaml:"config"`                         // 高级配置
 	Dbname       string `mapstructure:"db-name" json:"db-name" yaml:"db-name"`                      // 数据库名
 	Username     string `mapstructure:"username" json:"username" yaml:"username"`                   // 数据库用户名

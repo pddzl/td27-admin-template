@@ -1,6 +1,7 @@
 package global
 
 import (
+	"github.com/go-redis/redis/v8"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
@@ -13,4 +14,5 @@ var (
 	TD27_CONFIG config.Server
 	TD27_LOG    *zap.Logger
 	TD27_DB     *gorm.DB
+	TD27_REDIS  *redis.Client
 )

@@ -5,6 +5,7 @@ import (
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"os"
+	"server/model/system"
 
 	"server/global"
 )
@@ -21,7 +22,7 @@ func Gorm() *gorm.DB {
 		return nil
 	}
 
-	dsn := m.Username + ":" + m.Password + "@tcp(" + m.Path + ")/" + m.Dbname + "?" + m.Config
+	dsn := m.Username + ":" + m.Password + "@tcp(" + m.Host + ")/" + m.Dbname + "?" + m.Config
 	mysqlConfig := mysql.Config{
 		DSN:                       dsn,   // DSN data source name
 		DefaultStringSize:         191,   // string 类型字段的默认长度
@@ -42,7 +43,11 @@ func Gorm() *gorm.DB {
 
 // RegisterTables 初始化数据库表
 func RegisterTables(db *gorm.DB) {
-	err := db.AutoMigrate()
+	err := db.AutoMigrate(
+		system.UserModel{},
+		system.JwtBlacklist{},
+	)
+
 	if err != nil {
 		global.TD27_LOG.Error("register table failed", zap.Error(err))
 		os.Exit(0)

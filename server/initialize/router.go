@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
+	"server/middleware"
 
 	_ "server/docs"
 	"server/global"
@@ -36,6 +37,10 @@ func Routers() *gin.Engine {
 	{
 		systemRouter.InitBaseRouter(PublicGroup) // 注册基础功能路由 不做鉴权
 	}
+
+	// 需要认证的路由
+	PrivateGroup := Router.Group("")
+	PrivateGroup.Use(middleware.JWTAuth())
 
 	global.TD27_LOG.Info("router register success")
 	return Router

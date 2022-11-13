@@ -2,9 +2,12 @@ package system
 
 import (
 	"context"
+	"errors"
+	"gorm.io/gorm"
+	"time"
+
 	"server/global"
 	"server/model/system"
-	"time"
 )
 
 type JwtService struct{}
@@ -22,11 +25,17 @@ func (jwtService *JwtService) SetRedisJWT(username string, jwt string) (err erro
 	return err
 }
 
-// JsonInBlacklist 拉黑jwt
-func (jwtService *JwtService) JsonInBlacklist(jwtList system.JwtBlacklist) (err error) {
+// JoinInBlacklist 拉黑jwt
+func (jwtService *JwtService) JoinInBlacklist(jwtList system.JwtBlacklist) (err error) {
 	err = global.TD27_DB.Create(&jwtList).Error
 	if err != nil {
 		return
 	}
 	return
+}
+
+func (jwtService *JwtService) IsBlacklist(jwt string) bool {
+	err := global.TD27_DB.Where("jwt = ?", jwt).First(&system.JwtBlacklist{}).Error
+	isNotFound := errors.Is(err, gorm.ErrRecordNotFound)
+	return !isNotFound
 }

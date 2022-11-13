@@ -132,7 +132,7 @@ func tokenNext(c *gin.Context, user *system.UserModel) {
 	} else {
 		var blackJWT system.JwtBlacklist
 		blackJWT.Jwt = jwtStr
-		if err := jwtService.JsonInBlacklist(blackJWT); err != nil {
+		if err := jwtService.JoinInBlacklist(blackJWT); err != nil {
 			response.FailWithMessage("jwt作废失败", c)
 			return
 		}

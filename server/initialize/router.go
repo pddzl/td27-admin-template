@@ -4,10 +4,10 @@ import (
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
-	"server/middleware"
 
 	_ "server/docs"
 	"server/global"
+	"server/middleware"
 	"server/middleware/log"
 	"server/router"
 )

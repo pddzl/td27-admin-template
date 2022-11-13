@@ -7,14 +7,14 @@ import (
 	"github.com/golang-jwt/jwt/v4"
 	"github.com/mojocn/base64Captcha"
 	"go.uber.org/zap"
-	"server/model/system"
-	"server/utils"
 	"time"
 
 	"server/global"
 	"server/model/common/response"
+	"server/model/system"
 	systemReq "server/model/system/request"
 	systemRes "server/model/system/response"
+	"server/utils"
 )
 
 // 当开启多服务器部署时，替换下面的配置，使用redis共享存储验证码

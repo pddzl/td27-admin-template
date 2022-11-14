@@ -9,6 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.0.10",
+    "element-plus": "^2.2.21",
+    "nprogress": "^0.2.0",
+    "path": "^0.12.7",
     "vue": "^3.2.41"
   },
   "devDependencies": {

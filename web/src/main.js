@@ -8,6 +8,7 @@ import zhCn from 'element-plus/es/locale/lang/zh-cn'
 // 引入封装的router
 import router from '@/router/index'
 // import '@/permission'
+import run from '@/core/td27-admin.js'
 // import { store } from '@/pinia'
 import App from './App.vue'
 /**
